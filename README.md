@@ -11,12 +11,12 @@ Unless stated otherwise in the dockerfile, package versions are the latest insta
 
 Currently, the MMTk team run the development and testing of MMTk and bindings on Ubuntu-18.04.
 
-As in [Dockerfile](https://github.com/mmtk/mmtk-docker/blob/main/Dockerfile), setting up the dependencies can be done through these steps:
+As in [Dockerfile](https://github.com/mmtk/mmtk-dev-env/blob/main/Dockerfile), setting up the dependencies can be done through these steps:
 
-1. Install the required packages: [Dockerfile#17](https://github.com/mmtk/mmtk-docker/blob/main/Dockerfile#L17),
-2. Install `rustup` and add it to `PATH`: [Dockerfile#20-21](https://github.com/mmtk/mmtk-docker/blob/main/Dockerfile#L20-L21),
-3. Install our currently used nightly Rust toolchain using `rustup`: [Dockerfile#25](https://github.com/mmtk/mmtk-docker/blob/main/Dockerfile#L25),
-4. Add the `i686-unknown-linux-gnu` target to the Rust toolchain: [Dockerfile#26](https://github.com/mmtk/mmtk-docker/blob/main/Dockerfile#L26)
+1. Install the required packages: [Dockerfile#17](https://github.com/mmtk/mmtk-dev-env/blob/main/Dockerfile#L17),
+2. Install `rustup` and add it to `PATH`: [Dockerfile#20-21](https://github.com/mmtk/mmtk-dev-env/blob/main/Dockerfile#L20-L21),
+3. Install our currently used nightly Rust toolchain using `rustup`: [Dockerfile#25](https://github.com/mmtk/mmtk-dev-env/blob/main/Dockerfile#L25),
+4. Add the `i686-unknown-linux-gnu` target to the Rust toolchain: [Dockerfile#26](https://github.com/mmtk/mmtk-dev-env/blob/main/Dockerfile#L26)
 
 __NOTE:__ We successfully tried the same procedure on Ubuntu-20.04, but Ubuntu-18.04 is still the version we use daily.
 
