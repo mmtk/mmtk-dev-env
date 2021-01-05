@@ -23,8 +23,8 @@ RUN /bin/sh -c ". /root/.cargo/env"
 
 # install our current rust toolchain and std library
 # NOTE: ensure to set the RUSTUP_TOOLCHAIN environment variable
-RUN /root/.cargo/bin/rustup toolchain install nightly-2020-07-08
-RUN /root/.cargo/bin/rustup target add i686-unknown-linux-gnu --toolchain nightly-2020-07-08
+RUN /root/.cargo/bin/rustup toolchain install nightly-2020-12-20
+RUN /root/.cargo/bin/rustup target add i686-unknown-linux-gnu --toolchain nightly-2020-12-20
 
 ADD root/.bash_profile /root/.bash_profile
 
