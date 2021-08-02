@@ -1,0 +1,21 @@
+name: Test mmtk-dev-env
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  pre-code-review-checks:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build docker image
+        run: |
+          docker build -t mmtk-dev .
+      - name: Build mmtk-core
+        run: |
+          docker run mmtk-dev bash -c "git clone https://github.com/mmtk/mmtk-core.git && cargo build --manifest-path=mmtk-core/Cargo.toml"
