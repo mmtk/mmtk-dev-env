@@ -3,10 +3,10 @@ name: Test mmtk-dev-env
 on:
   pull_request:
     branches:
-      - master
+      - main
   push:
     branches:
-      - master
+      - main
 
 jobs:
   pre-code-review-checks:
