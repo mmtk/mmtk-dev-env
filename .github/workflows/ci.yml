@@ -7,9 +7,10 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
-  pre-code-review-checks:
+  build-mmtk-core:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
