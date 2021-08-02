@@ -1,6 +1,6 @@
 # MMTk Dependencies
 
-This repo provides a docker file which lists the dependencies of [MMTk](https://github.com/mmtk/mmtk-core) and its bindings for [V8](https://github.com/mmtk/mmtk-v8), [OpenJDK](https://github.com/mmtk/mmtk-openjdk) and [JikesRVM](https://github.com/mmtk/mmtk-openjdk).
+This repo provides a docker file which lists the dependencies of [MMTk](https://github.com/mmtk/mmtk-core) and its bindings for [V8](https://github.com/mmtk/mmtk-v8), [OpenJDK](https://github.com/mmtk/mmtk-openjdk) and [JikesRVM](https://github.com/mmtk/mmtk-jikesrvm).
 
 This docker file is based-on the official _Ubuntu-18.04_ (bionic) docker image which can be found [here](https://hub.docker.com/_/ubuntu).
 As the docker is minimal, the docker file may install packages (such as `locales`) which are already included on a standard Ubuntu-18.04 installation.

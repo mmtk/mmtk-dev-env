@@ -1,0 +1,25 @@
+name: Test mmtk-dev-env
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  # This workflow will be triggered in the mmtk-core CI to make sure mmtk-core can build with the docker image.
+  workflow_dispatch:
+
+jobs:
+  build-mmtk-core:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build docker image
+        run: |
+          docker build -t mmtk-dev .
+      - name: Build mmtk-core
+        # Build with --manifest-path. If we build under the mmtk-core folder with rust-toolchain, cargo will automatically download the correct
+        # toolchain, and we will not be able to test whether the toolchain used in the dockerfile is correct.
+        run: |
+          docker run mmtk-dev bash -c "git clone https://github.com/mmtk/mmtk-core.git && cargo build --manifest-path=mmtk-core/Cargo.toml"
