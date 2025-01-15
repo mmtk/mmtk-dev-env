@@ -22,4 +22,16 @@ jobs:
         # Build with --manifest-path. If we build under the mmtk-core folder with rust-toolchain, cargo will automatically download the correct
         # toolchain, and we will not be able to test whether the toolchain used in the dockerfile is correct.
         run: |
-          docker run mmtk-dev bash -c "git clone https://github.com/mmtk/mmtk-core.git && cargo build --manifest-path=mmtk-core/Cargo.toml"
+          docker run mmtk-dev bash -c "\
+            git clone https://github.com/mmtk/mmtk-core.git && \
+            cargo build --manifest-path=mmtk-core/Cargo.toml"
+      - name: Build OpenJDK
+        run: |
+          docker run mmtk-dev bash -c "\
+            git clone https://github.com/mmtk/mmtk-openjdk.git && \
+            git clone https://github.com/mmtk/openjdk.git && \
+            export MMTK_OPENJDK_PATH=\$(realpath mmtk-openjdk) && \
+            cd openjdk && \
+            export DEBUG_LEVEL=slowdebug && \
+            sh configure --disable-warnings-as-errors --with-debug-level=\$DEBUG_LEVEL && \
+            make CONF=linux-x86_64-normal-server-\$DEBUG_LEVEL THIRD_PARTY_HEAP=\$MMTK_OPENJDK_PATH/openjdk"
