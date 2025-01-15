@@ -15,7 +15,7 @@ ENV LANG en_US.utf8
 RUN apt-get update -y
 
 #install the required packages
-RUN apt-get install wget curl git python python3 openjdk-8-jdk openjdk-11-jdk ant autoconf bison pkg-config zip unzip build-essential gettext gcc-multilib libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev libcups2-dev libasound2-dev libfontconfig1-dev libtool -y && apt-get clean
+RUN apt-get install wget curl git python python3 openjdk-8-jdk openjdk-11-jdk ant autoconf bison pkg-config zip unzip build-essential gettext gcc-multilib libx11-dev libxext-dev libxrender-dev libXrandr-devel libxtst-dev libxt-dev libcups2-dev libasound2-dev libfontconfig1-dev libtool -y && apt-get clean
 
 # get rust toolchain version
 RUN wget https://raw.githubusercontent.com/mmtk/mmtk-core/master/rust-toolchain
