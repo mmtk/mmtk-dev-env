@@ -10,6 +10,9 @@ on:
   # This workflow will be triggered in the mmtk-core CI to make sure mmtk-core can build with the docker image.
   workflow_dispatch:
 
+env:
+  OPENJDK_BINDING_VERSION: "jdk-21"
+
 jobs:
   build-mmtk-core:
     runs-on: ubuntu-latest
@@ -28,10 +31,12 @@ jobs:
       - name: Build OpenJDK
         run: |
           docker run mmtk-dev bash -c "\
-            git clone https://github.com/mmtk/mmtk-openjdk.git && \
-            git clone https://github.com/mmtk/openjdk.git && \
+            git clone -b ${{ env.OPENJDK_BINDING_VERSION }} https://github.com/mmtk/mmtk-openjdk.git && \
+            cd mmtk-openjdk && \
+            .github/scripts/ci-checkout.sh && \
+            cd .. && \
             export MMTK_OPENJDK_PATH=\$(realpath mmtk-openjdk) && \
-            cd openjdk && \
+            cd mmtk-openjdk/repos/openjdk && \
             export DEBUG_LEVEL=slowdebug && \
             sh configure --disable-warnings-as-errors --with-debug-level=\$DEBUG_LEVEL && \
-            make CONF=linux-x86_64-normal-server-\$DEBUG_LEVEL THIRD_PARTY_HEAP=\$MMTK_OPENJDK_PATH/openjdk"
+            make CONF=linux-x86_64-server-\$DEBUG_LEVEL THIRD_PARTY_HEAP=\$MMTK_OPENJDK_PATH/openjdk"
